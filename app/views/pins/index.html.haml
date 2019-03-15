@@ -1,6 +1,7 @@
 #pins.transitions-enabled
   - @pins.each do |pin|
     .box.panel.panel-default
-      = link_to (image_tag pin.image.url), 'http://www.google.com'
+      = link_to href: pin_path(pin) do
+        = image_tag pin.image.url
       .panel-body
         %h2= link_to pin.title, pin
