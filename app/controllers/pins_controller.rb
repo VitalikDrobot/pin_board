@@ -4,6 +4,10 @@ class PinsController < ApplicationController
   before_action :find_pin, only: %i[show edit update destroy upvote]
   before_action :authenticate_user!, except: %i[edit destroy update]
 
+  def cloudinary_data
+    @cloudinary_data = Cloudinary::Uploader.upload(*uploadParams)
+  end
+
   def index
     @pins = Pin.all.order('created_at DESC')
   end
